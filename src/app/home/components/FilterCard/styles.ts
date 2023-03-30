@@ -1,9 +1,9 @@
 import { styled } from "@/stitches.config";
 
-export const PopularCardContainer = styled("div", {
+export const FilterCardContainer = styled("div", {
   display: "flex",
-  width: "20.25rem",
-  height: "8.125rem",
+  width: "25.11rem",
+  height: "11rem",
   backgroundColor: "$gray700",
   padding: "$4",
   borderRadius: 8,

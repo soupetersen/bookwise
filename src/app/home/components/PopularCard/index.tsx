@@ -1,15 +1,16 @@
-import { MostRatedsBooks } from "@/pages/api/books/most-rateds";
+import { IMostRatedsBooks } from "@/pages/api/books/most-rateds";
 import { PopularCardContainer, StarsContainer } from "./styles";
 import Image from "next/image";
 import ReactStars from "react-stars";
 
 interface PopularCardProps {
-  book: MostRatedsBooks;
+  book: IMostRatedsBooks;
+  onClick: (book: IMostRatedsBooks) => void;
 }
 
-export default function PopularCard({ book }: PopularCardProps) {
+export default function PopularCard({ book, onClick }: PopularCardProps) {
   return (
-    <PopularCardContainer>
+    <PopularCardContainer onClick={() => onClick(book)}>
       <Image src={book.cover_url} width={64} height={94} alt={book.name} />
       <div>
         <h3>{book.name}</h3>

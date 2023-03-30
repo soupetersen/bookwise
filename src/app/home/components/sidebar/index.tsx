@@ -5,17 +5,16 @@ import Image from "next/image";
 import { usePathname, useSearchParams } from "next/navigation";
 import { BsBinoculars, BsGraphUpArrow } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
+import { signOut } from "next-auth/react";
 
 export default function Sidebar() {
   const pathName = usePathname();
   const params = useSearchParams()?.get("tab");
 
-  function handleLogout() {}
-
-  function handleLogin() {}
-
-  function handleProfile() {
-    console.log("profile");
+  function handleLogout() {
+    signOut({
+      callbackUrl: "http://localhost:3000",
+    });
   }
 
   return (
@@ -37,14 +36,16 @@ export default function Sidebar() {
         />
 
         <NavButton
-          url="/home?tab=profile"
-          active={params == "profile"}
+          url="/home/profile"
+          active={params == "/home/profile"}
           Icon={AiOutlineUser}
           iconSize={26}
           text="Perfil"
         />
       </section>
-      <footer>Fazer logout</footer>
+      <footer>
+        <button onClick={handleLogout}>Fazer logout</button>
+      </footer>
     </SideBarContainer>
   );
 }

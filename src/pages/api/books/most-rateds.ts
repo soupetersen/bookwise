@@ -2,7 +2,7 @@ import prisma from "@/lib/servers/prisma";
 import { Book, Rating, User } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export interface MostRatedsBooks extends Book {
+export interface IMostRatedsBooks extends Book {
   rate: number;
   count: number;
 }
@@ -14,7 +14,6 @@ export default async function handler(
   //Find most rated books
 
   const limit = req.query.limit as string;
-  console.log("limit", limit);
 
   const mostRateds = await prisma.rating.findMany({
     orderBy: {
@@ -44,7 +43,7 @@ export default async function handler(
     return b[1].rate - a[1].rate;
   });
 
-  const mostRatedsBooks: MostRatedsBooks[] = [];
+  const mostRatedsBooks: IMostRatedsBooks[] = [];
 
   for (const book of orderBooksByRate) {
     const bookId = book[0];
@@ -62,7 +61,7 @@ export default async function handler(
       break;
     }
 
-    const value: MostRatedsBooks = {
+    const value: IMostRatedsBooks = {
       rate: bookRate,
       count: bookCount,
       author: bookMostRated.book.author,

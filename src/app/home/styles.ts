@@ -7,7 +7,7 @@ export const HomeLayoutContainer = styled("div", {
   padding: "$4",
 });
 
-export const HomeContainer = styled("div", {
+export const PageContainer = styled("div", {
   display: "flex",
   flexDirection: "column",
   width: "91rem",
@@ -15,21 +15,29 @@ export const HomeContainer = styled("div", {
 
   padding: "0 6rem",
   overflow: "hidden",
+  margin: "0 auto",
 });
 
-export const HomeHeader = styled("div", {
+export const PageHeader = styled("div", {
   display: "flex",
   width: "100%",
   minHeight: "9rem",
   padding: "4rem 0",
-  gap: "$4",
+  justifyContent: "space-between",
+
+  "& > div": {
+    display: "flex",
+    gap: "$3",
+    minHeight: "3rem",
+    alignItems: "center",
+  },
 
   svg: {
     fill: "$green100",
   },
 
-  p: {
-    fontSize: "$lg",
+  h1: {
+    fontSize: "$2xl",
     fontWeight: "$bold",
     lineHeight: "$short",
   },

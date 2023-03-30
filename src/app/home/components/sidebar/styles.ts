@@ -22,4 +22,16 @@ export const SideBarContainer = styled("div", {
     marginTop: "4rem",
     gap: "$3",
   },
+
+  button: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    background: "transparent",
+    color: "$gray200",
+    cursor: "pointer",
+
+    outline: "none",
+    border: "none",
+  },
 });

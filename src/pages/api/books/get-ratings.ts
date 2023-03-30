@@ -2,7 +2,7 @@ import prisma from "@/lib/servers/prisma";
 import { Book, Rating, User } from "@prisma/client";
 import { NextApiRequest, NextApiResponse } from "next";
 
-export interface BookRatings extends Rating {
+export interface IBookRatings extends Rating {
   book: Book;
   user: User;
 }
@@ -12,7 +12,6 @@ export default async function handler(
   res: NextApiResponse,
 ) {
   //Find latest books reviews
-  console.log("Find latest books reviews");
 
   const booksRatings = await prisma.rating.findMany({
     include: {
