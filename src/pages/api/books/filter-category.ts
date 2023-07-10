@@ -39,8 +39,6 @@ export default async function handler(
     return res.status(200).json(books);
   }
 
-  console.log("search filter", filter);
-
   const books = await prisma.book.findMany({
     include: {
       ratings: true,
@@ -56,8 +54,6 @@ export default async function handler(
       },
     },
   });
-
-  console.log("books", books);
 
   return res.status(200).json(books);
 }

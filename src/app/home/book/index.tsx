@@ -27,8 +27,6 @@ interface BookProps {
 export function Book({ book, close }: BookProps) {
   const rate = calculateBookRate(book);
 
-  console.log(book);
-
   return (
     <Dialog.Root>
       <Dialog.Portal forceMount>

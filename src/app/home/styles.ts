@@ -1,12 +1,5 @@
 import { styled } from "@/stitches.config";
 
-export const HomeLayoutContainer = styled("div", {
-  display: "flex",
-  width: "100%",
-  height: "100vh",
-  padding: "$4",
-});
-
 export const PageContainer = styled("div", {
   display: "flex",
   flexDirection: "column",

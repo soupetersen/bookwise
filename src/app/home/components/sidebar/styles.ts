@@ -33,5 +33,9 @@ export const SideBarContainer = styled("div", {
 
     outline: "none",
     border: "none",
+
+    a: {
+      all: "unset",
+    },
   },
 });

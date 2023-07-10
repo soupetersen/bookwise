@@ -1,15 +1,17 @@
 "use client";
+
 import { Container, ImageContainer, LoginCard, LoginContainer } from "./styles";
 import Image from "next/image";
 
 import { signIn, useSession } from "next-auth/react";
-import { redirect } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import { LoginButton } from "@/components/LoginButton";
 import LoginImage from "public/login-image.png";
 import Logo from "public/logo.png";
 
 export default function Signin() {
   const { data: session, status } = useSession();
+  const router = useRouter();
 
   if (status === "authenticated") {
     redirect("/home");
@@ -25,7 +27,9 @@ export default function Signin() {
     });
   }
 
-  async function handleAnonymousSignin() {}
+  async function handleAnonymousSignin() {
+    router.push("/home");
+  }
 
   return (
     <Container>

@@ -20,7 +20,6 @@ import { ShowAllButton } from "@/components/ShowAllButton";
 import { IBook } from "@/pages/api/books/[id]";
 import { useState } from "react";
 import { Book } from "./book";
-import { useSession } from "next-auth/react";
 
 export default function Home() {
   const [book, setBook] = useState<IBook | undefined>();
@@ -44,7 +43,6 @@ export default function Home() {
   async function handleBookClick(book: IMostRatedsBooks) {
     const response = await fetch(`${api}/books/${book.id}`);
     const data = await response.json();
-    console.log(data);
     setBook(data);
   }
 
@@ -70,8 +68,8 @@ export default function Home() {
           <BooksContainer>
             <FilterText>Avaliações mais recentes</FilterText>
             <Books>
-              {booksRatings?.map((rating: any) => (
-                <BookCardRating rating={rating} />
+              {booksRatings?.map((rating) => (
+                <BookCardRating key={rating.id} rating={rating} />
               ))}
             </Books>
           </BooksContainer>
@@ -79,8 +77,9 @@ export default function Home() {
             <FilterText>Livros populares</FilterText>
             <ShowAllButton onClick={showAllRateds} />
             <Books isMostPopular>
-              {mostRateds?.map((book: any) => (
+              {mostRateds?.map((book) => (
                 <PopularCard
+                  key={book.id}
                   book={book}
                   onClick={(value) => handleBookClick(value)}
                 />
